@@ -2,11 +2,10 @@
 _commit: 2024.2.0-9-gc2a16f5
 _src_path: gh:blakeNaccarato/copier-python
 actions_runner: ubuntu-22.04
-github_repo_name: c-therm-tci
-project_description: Process data exported from the C-Therm TCi thermal conductivity
-    analyzer.
+github_repo_name: lj-tick-in-amp
+project_description: LJ-Tick instrumentation amplifier setup for a load cell
 project_email: blake.naccarato@gmail.com
-project_name: c_therm_tci
+project_name: lj_tick_in_amp
 project_owner_github_username: blakeNaccarato
 project_owner_name: Blake Naccarato
 project_version: 0.0.0

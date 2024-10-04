@@ -15,7 +15,7 @@ body:
       label: "Please check that this internal matter hasn't already been raised"
       options:
         - required: True
-          label: "I searched [here](https://github.com/blakeNaccarato/c-therm-tci/issues?q=label%3Ainternal+sort%3Acomments-desc) or [here](https://github.com/search?q=repo%3AblakeNaccarato/c-therm-tci+label%3Ainternal&type=issues) and couldn't find a similar issue."
+          label: "I searched [here](https://github.com/blakeNaccarato/lj-tick-in-amp/issues?q=label%3Ainternal+sort%3Acomments-desc) or [here](https://github.com/search?q=repo%3AblakeNaccarato/lj-tick-in-amp+label%3Ainternal&type=issues) and couldn't find a similar issue."
   - type: "textarea"
     id: "description"
     validations:

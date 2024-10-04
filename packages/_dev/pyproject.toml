@@ -29,7 +29,7 @@ deps = ["packages/_dev/pyproject.toml"]
 code = ["packages/_dev", "docs", "tests"]
 ignore_undeclared = [
   # ? This project
-  "c_therm_tci",
+  "lj_tick_in_amp",
   # ? Workspaces
   "dev",
 ]

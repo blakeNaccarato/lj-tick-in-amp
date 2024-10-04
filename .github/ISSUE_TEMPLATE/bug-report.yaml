@@ -8,15 +8,15 @@ body:
       label: "Please check that this bug hasn't been reported before"
       options:
         - required: True
-          label: "I searched [here](https://github.com/blakeNaccarato/c-therm-tci/issues?q=label%3Abug+sort%3Acomments-desc) or [here](https://github.com/search?q=repo%3AblakeNaccarato/c-therm-tci+label%3Abug&type=issues) and couldn't find a similar issue."
+          label: "I searched [here](https://github.com/blakeNaccarato/lj-tick-in-amp/issues?q=label%3Abug+sort%3Acomments-desc) or [here](https://github.com/search?q=repo%3AblakeNaccarato/lj-tick-in-amp+label%3Abug&type=issues) and couldn't find a similar issue."
   - type: "checkboxes"
     id: "latest-version"
     attributes:
       label: "Please confirm that this bug affects the latest version"
-      description: "Please verify the issue is present in the latest version by installing it with `pip install c_therm_tci==0.0.0` and checking that the bug is still there"
+      description: "Please verify the issue is present in the latest version by installing it with `pip install lj_tick_in_amp==0.0.0` and checking that the bug is still there"
       options:
         - required: True
-          label: "This bug affects version `0.0.0` of `c_therm_tci`."
+          label: "This bug affects version `0.0.0` of `lj_tick_in_amp`."
   - type: "checkboxes"
     id: "operating-systems"
     attributes:

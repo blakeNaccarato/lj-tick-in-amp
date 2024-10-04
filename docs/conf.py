@@ -106,7 +106,7 @@ copyright = f"{date.today().year}, {AUTHORS}"  # noqa: A001
 version = VERSION
 master_doc = "index"
 language = "en"
-exclude_patterns = ["_build", "Thumbs.db", ".DS_Store", "pdf.md"]
+exclude_patterns = ["_build", "Thumbs.db", ".DS_Store"]
 extensions = [
     "autodoc2",
     "myst_nb",
@@ -170,7 +170,12 @@ math_eqref_format = "Eq. {number}"
 mermaid_d3_zoom = False
 # ! Autodoc2
 nitpicky = True
-autodoc2_packages = [f"../src/{PACKAGE}"]
+autodoc2_packages = [
+    f"../src/{PACKAGE}",
+    f"{PACKAGE}_docs",
+    f"../tests/{PACKAGE}_tests",
+    f"../scripts/{PACKAGE}_tools",
+]
 autodoc2_render_plugin = "myst"
 # ? Autodoc2 does not currently obey `python_display_short_literal_types` or
 # ? `python_use_unqualified_type_names`, but `maximum_signature_line_length` makes it a

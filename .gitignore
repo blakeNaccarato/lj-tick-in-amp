@@ -1,8 +1,3 @@
-# Ignore data folder or symlink
-/data
-# Ignore PDFs
-*.pdf
-
 # * -------------------------------------------------------------------------------- * #
 # * Template gitignore
 

@@ -1,8 +1,5 @@
 * text=auto
 
-# Other
-*.xlsx binary
-
 # Documents
 *.bibtex text diff=bibtex
 *.doc diff=astextplain

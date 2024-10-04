@@ -1,10 +1,7 @@
 {
   "commitConvention": "angular",
   "contributorsPerLine": 7,
-  "files": [
-    "CONTRIBUTORS.md",
-    "README.md"
-  ],
-  "projectName": "c-therm-tci",
+  "files": ["CONTRIBUTORS.md", "README.md"],
+  "projectName": "lj-tick-in-amp",
   "projectOwner": "blakeNaccarato"
 }

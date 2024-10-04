@@ -16,7 +16,7 @@ jobs:
     runs-on: "ubuntu-22.04"
     environment:
       name: "release"
-      url: "https://pypi.org/p/c-therm-tci"
+      url: "https://pypi.org/p/lj-tick-in-amp"
     steps:
       - uses: "actions/checkout@692973e3d937129bcbf40652eb9f2f61becf3332" # v4.1.7
       - uses: "astral-sh/setup-uv@9f1f1fece28798fe5e7ece00f4243abe886974b2" # v3.0.0

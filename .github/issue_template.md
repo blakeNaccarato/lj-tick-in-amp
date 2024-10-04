@@ -6,13 +6,13 @@ Please apply the `bug` label
 
 ### Please check that this bug hasn't been reported before
 
-- [ ] I searched [here](https://github.com/blakeNaccarato/c-therm-tci/issues?q=label%3Abug+sort%3Acomments-desc) or [here](https://github.com/search?q=repo%3AblakeNaccarato/c-therm-tci+label%3Abug&type=issues) and couldn't find a similar issue.
+- [ ] I searched [here](https://github.com/blakeNaccarato/lj-tick-in-amp/issues?q=label%3Abug+sort%3Acomments-desc) or [here](https://github.com/search?q=repo%3AblakeNaccarato/lj-tick-in-amp+label%3Abug&type=issues) and couldn't find a similar issue.
 
 ### Please confirm that this bug affects the latest version
 
-<!-- Please verify the issue is present in the latest version by installing it with `pip install c_therm_tci==0.0.0` and checking that the bug is still there #} -->
+<!-- Please verify the issue is present in the latest version by installing it with `pip install lj_tick_in_amp==0.0.0` and checking that the bug is still there #} -->
 
-- [ ] This bug affects version `0.0.0` of `c_therm_tci`.
+- [ ] This bug affects version `0.0.0` of `lj_tick_in_amp`.
 
 ### Please indicate which operating system(s) you are using
 
