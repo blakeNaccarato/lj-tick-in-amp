@@ -13,7 +13,7 @@ from docutils import nodes
 from myst_parser.parsers.sphinx_ import MystParser
 from numpydoc.docscrape import NumpyDocString, Parameter
 
-from c_therm_tci_docs.types import RegularSection, SeeAlsoSection, SingleSeeAlso
+from dev.docs.types import RegularSection, SeeAlsoSection, SingleSeeAlso
 
 _PARAMETERS_SECTIONS: Final[tuple[str, ...]] = (
     "Parameters",

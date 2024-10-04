@@ -1,9 +1,16 @@
-# C-Therm TCi instrument usage and data process
+# c_therm_tci
 
-Process data exported from the C-Therm TCi thermal conductivity analyzer. See how to [process data](https://blakenaccarato.github.io/c-therm-tci/) exported from the instrument or [the tutorial](https://blakenaccarato.github.io/c-therm-tci/tutorial.html) to learn how to use the instrument.
+[![All Contributors](https://img.shields.io/github/all-contributors/blakeNaccarato/c-therm-tci?color=ee8449&style=flat-square)](#contributors)
+
+Process data exported from the C-Therm TCi thermal conductivity analyzer..
 
 ## Project information
 
 - [Changes](<https://blakeNaccarato.github.io/c-therm-tci/changelog.html>)
 - [Docs](<https://blakeNaccarato.github.io/c-therm-tci>)
 - [Contributing](<https://blakeNaccarato.github.io/c-therm-tci/contributing.html>)
+
+## Contributors
+
+<!-- ALL-CONTRIBUTORS-LIST:START - Do not remove or modify this section -->
+<!-- ALL-CONTRIBUTORS-LIST:END -->

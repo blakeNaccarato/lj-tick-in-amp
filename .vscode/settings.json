@@ -16,12 +16,9 @@
     "**/*pylance-notebook-cell*": true
   },
   "search.exclude": {
-    //? Template clutters quick-open
-    "submodules/template": true,
-    //? Type stubs clutter quick-open
-    "submodules/typings": true,
-    //? Locks clutter searches
-    "tools/lock.json": true
+    //? Don't search in submodules or locks by default
+    "typings": true,
+    "uv.lock": true
   },
   //! File nesting
   "explorer.sortOrder": "foldersNestsFiles",
@@ -29,24 +26,25 @@
   "explorer.fileNesting.expand": false,
   "explorer.fileNesting.patterns": {
     //? Prevents file nesting from hijacking brand new files before setting filename
-    "*.root": ".*, a*, b*, c*, d*, e*, f*, g*, h*, i*, j*, k*, l*, m*, n*, o*, p*, q*, r*, s*, t*, u*, v*, w*, x*, y*, z*, 0*, 1*, 2*, 3*, 4*, 5*, 6*, 7*, 8*, 9*, _*, -*, {*"
+    "*.root": ".*, a*, b*, c*, d*, e*, f*, g*, h*, i*, j*, k*, l*, m*, n*, o*, p*, q*, r*, s*, t*, u*, v*, w*, x*, y*, z*, A*, B*, C*, D*, E*, F*, G*, H*, I*, J*, K*, L*, M*, N*, O*, P*, Q*, R*, S*, T*, U*, V*, W*, X*, Y*, Z*, 0*, 1*, 2*, 3*, 4*, 5*, 6*, 7*, 8*, 9*, _*, -*, {*"
   },
   //! File associations
   "files.associations": {
     ".coveragerc": "ini",
-    ".env": "dotenv",
     ".pylintrc": "ini",
     ".root": "plaintext",
     ".sourcery.yaml": "yaml",
     "*ipython-input*": "python",
     "*requirements*.in": "pip-requirements",
-    "pyrightconfig.json": "jsonc"
+    "pyrightconfig.json": "jsonc",
+    "uv.lock": "toml"
   },
   //! Git
   "git.allowNoVerifyCommit": true,
   "git.confirmNoVerifyCommit": false,
   "git.commandsToLog": ["commit", "push"],
   //! Line-width
+  "git.inputValidation": true,
   "git.inputValidationSubjectLength": 88,
   "git.inputValidationLength": 1e100,
   "editor.wordWrapColumn": 88,
@@ -83,6 +81,81 @@
   //! Extensions
   //* autoDocstring
   "autoDocstring.docstringFormat": "numpy-notypes",
+  //* Better Comments
+  "better-comments.tags": [
+    {
+      "tag": "!",
+      "color": "#FF2D00",
+      "strikethrough": false,
+      "underline": false,
+      "backgroundColor": "transparent",
+      "bold": false,
+      "italic": false
+    },
+    {
+      "tag": "?",
+      "color": "#3498DB",
+      "strikethrough": false,
+      "underline": false,
+      "backgroundColor": "transparent",
+      "bold": false,
+      "italic": false
+    },
+    {
+      "tag": "//",
+      "color": "#474747",
+      "strikethrough": true,
+      "underline": false,
+      "backgroundColor": "transparent",
+      "bold": false,
+      "italic": false
+    },
+    {
+      "tag": "todo",
+      "color": "#FF8C00",
+      "strikethrough": false,
+      "underline": false,
+      "backgroundColor": "transparent",
+      "bold": false,
+      "italic": false
+    },
+    {
+      "tag": ".....",
+      "color": "#FF8C00",
+      "strikethrough": false,
+      "underline": false,
+      "backgroundColor": "transparent",
+      "bold": false,
+      "italic": false
+    },
+    {
+      "tag": "*",
+      "color": "#98C379",
+      "strikethrough": false,
+      "underline": false,
+      "backgroundColor": "transparent",
+      "bold": false,
+      "italic": false
+    },
+    {
+      "tag": "NB:",
+      "color": "#3498DB",
+      "strikethrough": false,
+      "underline": false,
+      "backgroundColor": "transparent",
+      "bold": false,
+      "italic": false
+    },
+    {
+      "tag": "...",
+      "color": "#3498DB",
+      "strikethrough": false,
+      "underline": false,
+      "backgroundColor": "transparent",
+      "bold": false,
+      "italic": false
+    }
+  ],
   //* GitHub Actions
   "github-actions.workflows.pinned.workflows": [".github/workflows/ci.yml"],
   //* Jupyter Notebooks
@@ -97,10 +170,8 @@
   "python.analysis.diagnosticMode": "openFilesOnly",
   "python.analysis.typeCheckingMode": "strict",
   "editor.inlayHints.enabled": "offUnlessPressed",
-  "python.analysis.addImport.heuristics": true,
   "python.analysis.autoFormatStrings": true,
   "python.analysis.autoImportCompletions": true,
-  "python.analysis.completeFunctionParens": true,
   "python.analysis.extraCommitChars": true,
   "python.analysis.gotoDefinitionInStringLiteral": true,
   "python.analysis.importFormat": "absolute",
@@ -108,6 +179,17 @@
   "python.analysis.inlayHints.functionReturnTypes": true,
   "python.analysis.inlayHints.pytestParameters": true,
   "python.analysis.inlayHints.variableTypes": true,
+  //* PowerShell
+  "powershell.startAutomatically": false,
+  "powershell.promptToUpdatePowerShell": false,
+  "powershell.integratedConsole.showOnStartup": false,
+  "powershell.codeFormatting.autoCorrectAliases": true,
+  "powershell.codeFormatting.avoidSemicolonsAsLineTerminators": true,
+  "powershell.codeFormatting.trimWhitespaceAroundPipe": true,
+  "powershell.codeFormatting.useConstantStrings": true,
+  "powershell.codeFormatting.useCorrectCasing": true,
+  "powershell.codeFormatting.whitespaceBetweenParameters": true,
+  "powershell.codeFormatting.pipelineIndentationStyle": "IncreaseIndentationForFirstPipeline",
   //* Rewrap
   "rewrap.wrappingColumn": 88,
   "rewrap.wholeComment": false,
@@ -118,6 +200,9 @@
   "vsicons.presets.hideExplorerArrows": true,
   "vsicons.dontShowNewVersionMessage": false,
   //! Filetype extensions
+  //* Built-in Markdown support
+  //? Doesn't play nicely with All Contributors HTML
+  "markdown.validate.referenceLinks.enabled": "ignore",
   //* Markdownlint (MD)
   "[markdown]": {
     "editor.defaultFormatter": "DavidAnson.vscode-markdownlint"
@@ -156,9 +241,11 @@
   },
   //* Even Better TOML (TOML)
   "[toml]": {
-    "editor.defaultFormatter": "tamasfe.even-better-toml"
+    "editor.tabSize": 2,
+    "editor.defaultFormatter": "tamasfe.even-better-toml",
+    "editor.wordWrap": "off"
   },
-  "evenBetterToml.formatter.columnWidth": 88,
+  "evenBetterToml.taplo.configFile.path": ".taplo.toml",
   //! Other
   //? Other automatically added settings below
   "": ""

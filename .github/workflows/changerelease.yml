@@ -2,24 +2,21 @@
 name: "changerelease"
 on:
   workflow_dispatch:
+  workflow_call:
   push:
     branches: ["main"]
-    tags: ["*"]
     paths: ["CHANGELOG.md"]
 defaults:
   run:
     shell: "pwsh"
 jobs:
   changerelease:
-    strategy:
-      matrix:
-        runner: ["ubuntu-22.04"]
-        python: ["3.11"]
+    continue-on-error: true
     permissions:
       contents: "write"
-    runs-on: "${{ matrix.runner }}"
+    runs-on: "ubuntu-22.04"
     steps:
       - uses: "dropseed/changerelease@3b121c9e98fa055f59a32b023cb4fd2325f4d9dc" # v1.6.0
         with:
-          github_token: "${{ secrets.GITHUB_TOKEN }}"
+          github_token: "${{ github.token }}"
           tag_prefix: ""

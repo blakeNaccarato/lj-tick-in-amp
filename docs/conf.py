@@ -4,9 +4,9 @@ from datetime import date
 from hashlib import sha256
 from pathlib import Path
 
-from c_therm_tci_docs import DOCS, PYPROJECT, chdir_docs
-from c_therm_tci_docs.intersphinx import get_ispx, get_rtd, get_url
-from c_therm_tci_docs.types import IspxMappingValue
+from dev.docs import DOCS, PYPROJECT, chdir_docs
+from dev.docs.intersphinx import get_ispx, get_rtd, get_url
+from dev.docs.types import IspxMappingValue
 from ruamel.yaml import YAML
 from sphinx.application import Sphinx
 
@@ -65,7 +65,7 @@ def add_version_to_css(app: Sphinx, _pagename, _templatename, ctx, _doctree):
 
     See Also
     --------
-    - https://github.com/executablebooks/MyST-Parser/blob/978e845543b5bcb7af0ff89cac9f798cb8c16ab3/docs/conf.py#L241-L249
+    https://github.com/executablebooks/MyST-Parser/blob/978e845543b5bcb7af0ff89cac9f798cb8c16ab3/docs/conf.py#L241-L249
     """
     if app.builder.name != "html":
         return
@@ -136,11 +136,11 @@ COMMON_OPTIONS = {
 }
 html_theme_options = {
     **COMMON_OPTIONS,
+    "navigation_with_keys": False,  # https://github.com/pydata/pydata-sphinx-theme/pull/1503
     "repository_branch": "main",
     "show_navbar_depth": 2,
     "show_toc_level": 4,
-    "navigation_with_keys": False,  # https://github.com/pydata/pydata-sphinx-theme/pull/1503
-    "use_download_button": False,  # PDF export is broken, Markdown download not useful
+    "use_download_button": True,
     "use_fullscreen_button": True,
     "use_repository_button": True,
 }
@@ -168,11 +168,10 @@ nb_execution_raise_on_error = True
 numfig = True
 math_eqref_format = "Eq. {number}"
 mermaid_d3_zoom = False
-suppress_warnings = ["design.grid"]
 # ! Autodoc2
 nitpicky = True
 autodoc2_packages = [
-    f"../src/{PACKAGE}.py",
+    f"../src/{PACKAGE}",
     f"{PACKAGE}_docs",
     f"../tests/{PACKAGE}_tests",
     f"../scripts/{PACKAGE}_tools",
@@ -193,10 +192,8 @@ nitpick_ignore_regex = [
     (r"py:.*", r"docutils\..+"),
     (r"py:.*", r"numpydoc\.docscrape\..+"),
     (r"py:.*", r"_pytest\..+"),
-    # ? Not found
-    (r"py:.*", r"parsel\.Selector.*"),
     # ? TypeAlias: https://github.com/sphinx-doc/sphinx/issues/10785
-    (r"py:.*", rf"{PACKAGE}.*\.types\..+"),
+    (r"py:class", rf"{PACKAGE}.*\.types\..+"),
 ]
 # ! Tippy
 # ? https://sphinx-tippy.readthedocs.io/en/latest/index.html#confval-tippy_anchor_parent_selector

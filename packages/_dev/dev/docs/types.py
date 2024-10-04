@@ -2,8 +2,7 @@
 
 from typing import NamedTuple, TypeAlias
 
-# * -------------------------------------------------------------------------------- * #
-# * intersphinx
+# * MARK: intersphinx
 
 
 class IspxMappingValue(NamedTuple):
@@ -13,10 +12,7 @@ class IspxMappingValue(NamedTuple):
     path: str | None = None
 
 
-# * -------------------------------------------------------------------------------- * #
-# * docstrings
-
-
+# * MARK: docstrings
 SeeAlsoReference: TypeAlias = tuple[str, None]
 """In all examples given, there is a "None" here, like (numpy.dot, None)."""
 SeeAlsoRelationship: TypeAlias = list[str]
