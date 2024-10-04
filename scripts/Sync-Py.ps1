@@ -49,14 +49,7 @@ if (!(Test-Path 'bin/uv*') -or !(uv --version | Select-String $uvVersion)) {
 $pyDevVersionRe = Get-Content '.copier-answers.yml' |
     Select-String -Pattern '^python_version:\s?["'']([^"'']+)["'']$'
 $Version = $Version ? $Version : $pyDevVersionRe.Matches.Groups[1].value
-if ($CI) {
-    $py = Get-PySystem $Version
-    "Using $(Resolve-Path $py)" | Write-Progress -Info
-}
-else {
-    $py = Get-Py $Version
-    "Using $(Resolve-Path $py -Relative)" | Write-Progress -Info
-}
+if (!(Test-Path '.venv')) { uv venv }
 uv pip install --editable=scripts
 'TOOLS INSTALLED' | Write-Progress -Done
 
