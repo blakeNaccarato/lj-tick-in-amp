@@ -12,6 +12,7 @@ from cyclopts import App
 from dev.tools import add_changes, environment
 from dev.tools.environment import escape, run
 from dev.tools.types import ChangeType
+from dev.tools.environment import escape, run
 
 if version_info >= (3, 11):  # noqa: UP036, RUF100
     from tomllib import loads  # pyright: ignore[reportMissingImports]
@@ -99,17 +100,13 @@ def elevate_pyright_warnings():
         encoding="utf-8", data=dumps(pyright, indent=2)
     )
 
-
 @APP.command()
 def build_docs():
     """Build docs."""
-    run([
-        "sphinx-autobuild",
-        "--show-traceback",
-        "docs _site",
+    run(
+        "sphinx-autobuild --show-traceback docs _site",
         *[f"--ignore **/{p}" for p in ["temp", "data", "apidocs", "*schema.json"]],
-    ])
-
+    )
 
 def log(obj):
     """Send object to `stdout`."""

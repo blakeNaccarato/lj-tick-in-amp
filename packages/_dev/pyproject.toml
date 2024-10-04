@@ -11,6 +11,7 @@ dependencies = [
   "cyclopts>=2.9.3",
   "dulwich>=0.22.1",
   "pydantic-settings>=2.5.2",
+  "pydantic>=2.9.1",
   "python-dotenv>=1.0.1",
   "toml>=0.10.2",
   # ? Docs
