@@ -4,7 +4,7 @@ from datetime import UTC, datetime
 from json import dumps, loads
 from pathlib import Path
 from platform import platform
-from re import finditer, search
+from re import finditer
 from shlex import quote, split
 from subprocess import run
 from sys import version_info
@@ -57,7 +57,7 @@ See: https://packaging.python.org/en/latest/specifications/name-normalization/#n
 """
 
 
-def check_compilation(high: bool = False) -> str:  # noqa: PLR0911
+def check_compilation(high: bool = False) -> str:
     """Check compilation, re-lock if incompatible, and return the compilation.
 
     Parameters
@@ -65,34 +65,7 @@ def check_compilation(high: bool = False) -> str:  # noqa: PLR0911
     high
         Highest dependencies.
     """
-    old = get_compilation(SYS_PLATFORM, SYS_PYTHON_VERSION, high)
-    if not old:
-        return lock(high)  # Old compilation missing
-    old_uv = search(UV_PAT, old)
-    if not old_uv:
-        return lock(high)  # Unknown `uv` version last used to compile
-    if old_uv["version"] != get_uv_version():
-        return lock(high)  # Older `uv` version last used to compile
-    directs = compile(SYS_PLATFORM, SYS_PYTHON_VERSION, high, no_deps=True)
-    try:
-        subs = dict(
-            zip(finditer(SUB_PAT, old), finditer(SUB_PAT, directs), strict=False)
-        )
-    except ValueError:
-        return lock(high)  # Submodule missing
-    if any(old_sub.groups() != new_sub.groups() for old_sub, new_sub in subs.items()):
-        return lock(high)  # Submodule pinned commit SHA mismatch
-    old_directs: list[str] = []
-    for direct in finditer(DEP_PAT, directs):
-        pat = rf"(?mi)^(?P<name>{direct['name']})==(?P<ver>.+$)"
-        if match := search(pat, old):
-            old_directs.append(match.group())
-            continue
-        return lock(high)  # Direct dependency missing
-    sys_compilation = compile(SYS_PLATFORM, SYS_PYTHON_VERSION, high)
-    if any(d not in sys_compilation for d in old_directs):
-        return lock(high, sys_compilation)  # Direct dependency version mismatch
-    return old  # The old compilation is compatible
+    return get_compilation(SYS_PLATFORM, SYS_PYTHON_VERSION, high)
 
 
 def lock(high: bool, sys_compilation: str = "") -> str:

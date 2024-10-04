@@ -24,27 +24,6 @@ elseif ($Devcontainer) { $msg = 'devcontainer' }
 else { $msg = 'contributor environment' }
 "Will run $msg steps" | Write-Progress -Info
 
-'FINDING UV' | Write-Progress
-$uvVersionRe = Get-Content 'requirements/uv.in' | Select-String -Pattern '^uv==(.+)$'
-$uvVersion = $uvVersionRe.Matches.Groups[1].value
-if (!(Test-Path 'bin/uv*') -or !(uv --version | Select-String $uvVersion)) {
-    $Env:CARGO_HOME = '.'
-    if ($IsWindows) {
-        'INSTALLING UV FOR WINDOWS' | Write-Progress
-        $uvInstaller = "$([System.IO.Path]::GetTempPath())$([System.Guid]::NewGuid()).ps1"
-        Invoke-RestMethod "https://github.com/astral-sh/uv/releases/download/$uvVersion/uv-installer.ps1" |
-            Out-File $uvInstaller
-        powershell -Command "$uvInstaller -NoModifyPath"
-    }
-    else {
-        'INSTALLING UV' | Write-Progress
-        $Env:INSTALLER_NO_MODIFY_PATH = $true
-        curl --proto '=https' --tlsv1.2 -LsSf "https://github.com/astral-sh/uv/releases/download/$uvVersion/uv-installer.sh" |
-            sh
-    }
-    'UV INSTALLED' | Write-Progress -Done
-}
-
 'INSTALLING TOOLS' | Write-Progress
 $pyDevVersionRe = Get-Content '.copier-answers.yml' |
     Select-String -Pattern '^python_version:\s?["'']([^"'']+)["'']$'
